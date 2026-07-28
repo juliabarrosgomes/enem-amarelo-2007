@@ -3,8 +3,17 @@
 from PIL import Image
 import os
 
-pasta_imagens = "sem-bordas-externas"
-pasta_saida = "divididas-com-bordas-do-meio"
+#pasta_imagens = "933"
+#pasta_saida = "933-cortadas"
+
+#pasta_imagens = "992"
+#pasta_saida = "992-cortadas"
+
+#pasta_imagens = "1092"
+#pasta_saida = "1092-cortadas"
+
+pasta_imagens = "933"
+pasta_saida = "933-cortadas"
 
 os.makedirs(pasta_saida, exist_ok=True)
 
@@ -15,7 +24,10 @@ for nome_arquivo in os.listdir(pasta_imagens):
 
         largura, altura = imagem.size
         
-        metade_largura = largura // 2
+        metade_largura = 933
+        #metade_largura = 992
+       #metade_largura = 1092
+        #metade_largura = 1169
         
         caixa_esquerda = (0, 0, metade_largura, altura)
         imagem_esquerda = imagem.crop(caixa_esquerda)
