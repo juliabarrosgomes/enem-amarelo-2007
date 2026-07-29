@@ -2,8 +2,17 @@
 from PIL import Image
 import os
 
-pasta_imagens = "divididas-com-bordas-do-meio"
-pasta_saida = "divididas-sem-bordas-do-meio"
+pasta_imagens = "933-cortadas"
+pasta_saida = "933-sem-bordas"
+
+#pasta_imagens = "992-cortadas"
+#pasta_saida = "992-sem-bordas"
+
+#pasta_imagens = "1092-cortadas"
+#pasta_saida = "1092-sem-bordas"
+
+#pasta_imagens = "1169-cortadas"
+#pasta_saida = "1169-sem-bordas"
 
 os.makedirs(pasta_saida, exist_ok=True)
 
@@ -19,12 +28,16 @@ for nome_arquivo in os.listdir(pasta_imagens):
         
         # Aplica cortes adicionais baseados no nome do arquivo
         if nome_arquivo.endswith("_esquerda.png"):
-            # Remover pixels da borda direita das imagens de coluna da esquerda, nesse exemplo, 25 pixels
-            caixa_corte = (caixa_corte[0], caixa_corte[1], caixa_corte[2] - 48, caixa_corte[3]) # ATUALIZE AQUI O VALOR DE CORTE PARA A COLUNA DA ESQUERDA (esquerda, superior, direita, inferior)
+            #caixa_corte = (caixa_corte[0], caixa_corte[1], caixa_corte[2] - 31, caixa_corte[3]) # ESQUERDA do pixel 933 cortado ao meio
+            #caixa_corte = (caixa_corte[0], caixa_corte[1], caixa_corte[2] - 40, caixa_corte[3]) # ESQUERDA do pixel 992 cortado ao meio
+            #caixa_corte = (caixa_corte[0], caixa_corte[1], caixa_corte[2] - 40, caixa_corte[3]) # ESQUERDA do pixel 1092 cortado ao meio
+            caixa_corte = (caixa_corte[0], caixa_corte[1], caixa_corte[2] - 42, caixa_corte[3]) # ESQUERDA do pixel 1169 cortado ao meio
         
         elif nome_arquivo.endswith("_direita.png"):
-            # Remover pixels da borda esquerda das imagens de coluna da direita, nesse exemplo, 25 pixels
-            caixa_corte = (caixa_corte[0] + 48, caixa_corte[1], caixa_corte[2], caixa_corte[3]) # ATUALIZE AQUI O VALOR DE CORTE PARA A COLUNA DA DIREITA (esquerda, superior, direita, inferior)
+            #caixa_corte = (caixa_corte[0] + 47, caixa_corte[1], caixa_corte[2] - 2, caixa_corte[3]) # DIREITA do pixel 933 cortado ao meio
+            #caixa_corte = (caixa_corte[0] + 48, caixa_corte[1], caixa_corte[2] - 17, caixa_corte[3]) # DIREITA do pixel 992 cortado ao meio
+            #caixa_corte = (caixa_corte[0] + 48, caixa_corte[1], caixa_corte[2], caixa_corte[3]) # DIREITA do pixel 1092 cortado ao meio
+            caixa_corte = (caixa_corte[0] + 48, caixa_corte[1], caixa_corte[2] - 16, caixa_corte[3]) # DIREITA do pixel 1169 cortado ao meio
         
         imagem_cortada = imagem.crop(caixa_corte)
         
